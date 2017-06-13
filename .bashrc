@@ -123,4 +123,4 @@ alias t2='source .tmuxset-flask'
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-pyenv virtualenvwrapper
+pyenv virtualenvwrapper_lazy
