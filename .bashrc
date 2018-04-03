@@ -8,6 +8,8 @@ case $- in
       *) return;;
 esac
 
+export DISPLAY=:0
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -89,7 +91,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -lhF'
@@ -118,6 +120,9 @@ fi
 
 echo -ne   '\eP\e]12;#268BD2\a'  # Cursor       -> red
 
+alias vi0='vim --servername blog --remote ' 
+alias vi1='vim --servername misc --remote ' 
+alias t0='source .tmuxset-blog'
 alias t1='source .tmuxset-misc'
 alias t2='source .tmuxset-flask'
 export PYENV_ROOT="$HOME/.pyenv"
