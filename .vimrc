@@ -3,6 +3,10 @@ set nocompatible
 "source $VIMRUNTIME/mswin.vim
 "behave mswin
 
+" 버퍼를 저장하지 않아도 버퍼간 이동을 가능하게끔합니다
+set hidden
+   
+
 "set term=screen-256color
 set backspace=indent,eol,start
 
