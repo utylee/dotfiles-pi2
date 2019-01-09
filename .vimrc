@@ -3,12 +3,16 @@ set nocompatible
 "source $VIMRUNTIME/mswin.vim
 "behave mswin
 
+"set term=screen-256color
+set backspace=indent,eol,start
+
+" esc 누를시 딜레이를 없애줍니다
+" 참고사이트 : https://www.johnhawthorn.com/2012/09/vi-escape-delays/
+set timeoutlen=1000 ttimeoutlen=10
+
 " 버퍼를 저장하지 않아도 버퍼간 이동을 가능하게끔합니다
 set hidden
    
-
-"set term=screen-256color
-set backspace=indent,eol,start
 
 " bashrc 의 alias를 읽기 위한 설정입니다
 "let $BASH_ENV = "~/.bashrc"
@@ -162,6 +166,13 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 "let g:jedi#auto_initialization = 1 
 "let g:jedi#squelch_py_warning = 1
 
+
+" emmet-vim 을 html과 css에서만 사용하는 설정
+
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+
 set noundofile
 set number
 set cul
@@ -194,12 +205,12 @@ set noshellslash
 "nmap <leader>e :!python3 '%:p'<CR>
 "nmap <leader>e :set shellcmdflag=-ic <CR> :!ts python '%'<CR> <CR> :set shellcmdflag=-c<CR>
 "nmap <leader>e :!ts python '%:p' 2>/dev/null<CR> <CR>
-"nmap <leader>e :!ts python '%' 2>/dev/null<CR> <CR>
-nmap <leader>e :!ts python '%' 2>/dev/null<CR> 
+nmap <leader>e :!ts python '%' 2>/dev/null<CR> <CR>
 "현재 행을 실행하는 커맨드인데 공백제거가 안돼 아직 제대로 되지 않습니다
 nmap <leader>w :exec '!ts python -c \"'getline('.')'\"'<CR>
 nmap <leader>` :set fullscreen<CR>
 nmap <leader>q :bd!<CR>
+nmap <leader>c :!ts C-c<CR> <CR>
 map <F7> :NERDTreeTabsToggle<CR>
 map <F2> :NERDTreeToggle<CR>
 nmap <leader>2 :NERDTreeToggle<CR>
@@ -223,6 +234,11 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg|avi|mkv|mov|mp4|wma|xlsx|mp3|ini|doc|docx|un|bak)$',
 \}
 
+" 현재파일의 디렉토리로 변경 %->  상대경로파일명, :p-> 절대경로파일명, :h->
+" 한마디전으로
+
+nmap <leader>z :cd %:p:h<cr> :pwd<cr>
+
 
 
 " Use the nearest .git directory as the cwd
@@ -238,7 +254,7 @@ nmap <leader>b :CtrlPBuffer<cr>
 nmap <leader>t :CtrlPMRU<cr>
 nmap <leader>m :CtrlPMixed<cr>
 "nmap <leader>bs :CtrlPMRU<cr>
-let g:ctrlp_match_window = 'max:20'
+let g:ctrlp_match_window = 'max:12'
 
 " Split size change
 nmap <leader>- :resize -5<cr>

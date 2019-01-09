@@ -9,6 +9,9 @@ case $- in
 esac
 
 export DISPLAY=:0
+# git editor를 vim으로 바꾸는 환경변수 차원의 방법이랍니다
+export GIT_EDITOR=vim
+
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
