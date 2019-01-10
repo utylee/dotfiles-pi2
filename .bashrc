@@ -46,7 +46,12 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+	xterm-color) color_prompt=yes;;
+	xterm-256color) color_prompt=yes;;
+	screen-256color) color_prompt=yes;;
+	xterm-256color-italic) color_prompt=yes;;
+	screen-256color-italic) color_prompt=yes;;
+
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -122,6 +127,7 @@ if ! shopt -oq posix; then
 fi
 
 echo -ne   '\eP\e]12;#268BD2\a'  # Cursor       -> red
+alias mygrep="grep -rn . --exclude={*.o,*.a,tags} -e "
 
 alias vi0='vim --servername blog --remote ' 
 alias vi1='vim --servername misc --remote ' 
