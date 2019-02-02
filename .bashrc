@@ -106,6 +106,20 @@ alias ll='ls -lhF'
 #alias la='ls -A'
 #alias l='ls -CF'
 
+vi0() {
+	filename=$PWD/$1
+	tmux send-keys -t vBLOG.0 ":e $filename" C-m
+	tmux select-window -t vBLOG
+	tmux select-pane -t vBLOG.0
+}
+vi1() {
+	filename=$PWD/$1
+	tmux send-keys -t vMISC.0 ":e $filename" C-m
+	tmux select-window -t vMISC
+	tmux select-pane -t vMISC.0
+}
+
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -129,8 +143,8 @@ fi
 echo -ne   '\eP\e]12;#268BD2\a'  # Cursor       -> red
 alias mygrep="grep -rn . --exclude={*.o,*.a,tags} -e "
 
-alias vi0='vim --servername blog --remote ' 
-alias vi1='vim --servername misc --remote ' 
+#alias vi0='vim --servername blog --remote ' 
+#alias vi1='vim --servername misc --remote ' 
 alias t0='source .tmuxset-blog'
 alias t1='source .tmuxset-misc'
 alias t2='source .tmuxset-flask'
