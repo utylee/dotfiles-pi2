@@ -152,3 +152,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 pyenv virtualenvwrapper_lazy
+
+set -o vi
+export FZF_COMPLETION_TRIGGER='**'
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore'
+export FZF_CTRL_T_COMMAND='rg --files /home/pi --hidden --follow --no-ignore'
+
